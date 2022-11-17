@@ -19,7 +19,14 @@ services:
       - "MYSQL_USER=${MYSQL_USER}"
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
     restart: always
-
+    
+  msmtpd:
+    image: crazymax/msmtpd:latest
+    container_name: librenms_msmtpd
+    env_file:
+      - "./msmtpd.env"
+    restart: always
+    
   redis:
     image: redis:5.0-alpine
     container_name: librenms_redis
